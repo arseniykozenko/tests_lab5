@@ -9,7 +9,7 @@ class TestRequests:
     """Тесты для REST API запросов"""
     def test_get_user(self):
         """Тестирование получения данных о пользователе"""
-        response = requests.get(f"{BASE_URL}/users/1", timeout=TIMEOUT)
+        response = requests.get(f"{BASE_URL}/users/1", timeout=TIMEOUT, headers=HEADERS)
         assert response.status_code == 200, 'Неверный код ответа'
 
         data = response.json()
