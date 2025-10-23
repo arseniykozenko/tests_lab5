@@ -10,15 +10,15 @@ class TestRequests:
     def test_get_user(self):
         """Тестирование получения данных о пользователе"""
         response = requests.get(f"{BASE_URL}/users/1", timeout=TIMEOUT, headers=HEADERS)
-        assert response.status_code == 200, 'Неверный код ответа'
+        assert response.status_code == 200, 'Неверный код ответа!'
 
         data = response.json()
         assert 'data' in data, 'Нет данных в ответе'
         assert all(key in data['data'] for key in \
                    ['id', 'email', 'first_name', 'last_name', 'avatar']), \
                         'Нет необходимых полей в ответе'
-        assert data['data']['id'] == 1, 'Неверный id'
-        assert '@' in data['data']['email'], 'Неверный email'
+        assert data['data']['id'] == 1, 'Неверный id!'
+        assert '@' in data['data']['email'], 'Неверный email!'
 
     def test_create_user(self):
         """Тестирование создания пользователя"""
@@ -28,7 +28,7 @@ class TestRequests:
             "job": "Backend Developer"
         }
         response = requests.post(f"{BASE_URL}/users", json=payload, timeout=TIMEOUT, headers=HEADERS)
-        assert response.status_code == 201, 'Неверный код ответа'
+        assert response.status_code == 201, 'Неверный код ответа!'
 
         data = response.json()
         assert all(key in data for key in \
